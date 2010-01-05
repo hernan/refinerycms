@@ -4101,10 +4101,14 @@ WYMeditor.Helper = {
 
 function titleize(words) {
 	parts = [];
-	words.gsub(/\./, '').gsub(/[-_]/, ' ').split(' ').each(function(part){
+  jQuery.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(){
+    parts.push(this[0].toUpperCase() + this.substring(1));
+  });
+/*
+  words.replace(/\./, '').replace(/[-_]/, ' ').split(' ').each(function(part){
 		parts.push(part[0].toUpperCase() + part.substring(1));
 	});
-
+*/
 	return parts.join(" ");
 }
 
